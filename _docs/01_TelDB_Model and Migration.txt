@@ -1,0 +1,69 @@
+=== БАЗА ДАННЫХ ===
+
+Необходимо создать базу данных и настроить подключение к ней в файле .env
+
+В mysql workbench -> create schemas -> указываем имя и кодировку utf8 и utf8_general_ci
+
+В файле .env указать параметры подключения к БД:
+	DB_CONNECTION=mysql
+	DB_HOST=127.0.0.1
+	DB_PORT=3306
+	DB_DATABASE=2019-poligon
+	DB_USERNAME=root
+	DB_PASSWORD=
+
+==================
+
+Устраняем ошибки при выполнении migration!
+
+app/Providers/AppServiceProvider.php
+#---------------------------------------------------------------------------#
+<?php
+
+namespace App\Providers;
+
+use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\Schema;
+
+class AppServiceProvider extends ServiceProvider
+{
+    /**
+     * Register any application services.
+     *
+     * @return void
+     */
+    public function register()
+    {
+        //
+    }
+
+    /**
+     * Bootstrap any application services.
+     *
+     * @return void
+     */
+    public function boot()
+    {
+        Schema::defaultStringLength(191);
+    }
+}
+#---------------------------------------------------------------------------#
+
+=== Содание моделей с миграциями ===
+
+!!!Важно создавать модели и миграции в определенной последовательности!!!
+!!!Так как в миграции идет создание foreignkey!!!
+
+Сначала создадим модели Posts (Должности) и Otdels (Отделы).
+
+php artisan make:model Models\TPosts -m
+php artisan make:model Models\TOtdels -m
+php artisan make:model Models\TUsers -m
+
+Создадутся файлы:
+app/Models/TOtdels.php
+app/Models/TPosts.php
+app/Models/TUsers.php
+database/migrations/2019_08_22_000951_create_t_posts_table.php
+database/migrations/2019_08_22_001039_create_t_otdels_table.php
+database/migrations/2019_08_22_004332_create_t_users_table.php
