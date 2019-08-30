@@ -16,9 +16,8 @@ class DatabaseSeeder extends Seeder
     {
         // $this->call(UsersTableSeeder::class);
 
-        $this->call(TUserTableSeeders::class);
-        //factory(TUsers::class, 30)->create();
-        //factory(TPosts::class, 9)->create();
-        //factory(TOtdels::class, 20)->create();
+        factory(TPosts::class, 10)->create();
+        factory(TOtdels::class, 40)->create();
+        factory(TUsers::class, 350)->create();
     }
 }

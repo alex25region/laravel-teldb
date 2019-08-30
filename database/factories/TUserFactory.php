@@ -21,14 +21,17 @@ $factory->define(TUsers::class, function (Faker $faker) {
 
     $faker = \Faker\Factory::create('ru_RU');
     $data = [
-
-        'surname' => $faker->firstName,
+        'surname' => $faker->lastName,
         'firstname' => $faker->firstName,
         'secondname' => $faker->firstName,
         'iptel' => rand(1000,1999),
         'tel' => $faker->phoneNumber,
-        'post_id' => factory(TPosts::class),
-        'otdel_id' => factory(TOtdels::class),
+        'post_id' => function () {
+            return TPosts::inRandomOrder()->first()->id;
+        },
+        'otdel_id' => function () {
+        return TOtdels::inRandomOrder()->first()->id;
+        }
     ];
 
     return $data;

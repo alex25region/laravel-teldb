@@ -13,14 +13,18 @@ class TOtdels extends Model
     // $table->string('telefon', 50);
     // $table->string('email');
 
-//    protected $fillable = [
-//            'otdel',
-//            'address',
-//            'telefon',
-//            'email',
-//        ];
+    // Можно указать поля для обновления, но так как все будут обновляться то нет смысла!
+    // protected $fillable = [
+    //         'otdel',
+    //         'address',
+    //         'telefon',
+    //         'email',
+    //     ];
 
-    protected $guarded = [
-        'id'
-    ];
+    // функуция $guarded значит исключить из обновления
+    // НО, ПОЛЯ id, created_at, updated_at обновляются автоматически!!!!!
+    // Соответственно ниже строчки не имееют смысла:
+    // protected $guarded = [
+    //         'id'
+    //     ];
 }

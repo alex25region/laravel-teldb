@@ -15,8 +15,5 @@ class TUserTableSeeders extends Seeder
     public function run()
     {
 
-
-
     }
-
 }

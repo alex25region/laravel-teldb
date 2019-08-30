@@ -31,11 +31,13 @@ class TUsers extends Model
     // Юзер имеет 1 должность:
     public function post() {
         //return $this->hasOne("App\Models\TPost");   // можно так
+        //return $this->hasOne(TPosts::class, 'post_id', 'id');
         return $this->hasOne(TPosts::class);  // лучше так
     }
 
     // Юзер имеет 1 отдел:
     public function otdel() {
+        //return $this->hasOne(TOtdels::class, 'otdel_id', 'id');
         return $this->hasOne(TOtdels::class);
     }
 
