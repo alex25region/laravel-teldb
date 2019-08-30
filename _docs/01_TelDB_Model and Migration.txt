@@ -1,4 +1,4 @@
-=== БАЗА ДАННЫХ ===
+#=== БАЗА ДАННЫХ ===
 
 Необходимо создать базу данных и настроить подключение к ней в файле .env
 
@@ -8,9 +8,9 @@
 	DB_CONNECTION=mysql
 	DB_HOST=127.0.0.1
 	DB_PORT=3306
-	DB_DATABASE=2019-poligon
+	DB_DATABASE=laravel-teldb
 	DB_USERNAME=root
-	DB_PASSWORD=
+	DB_PASSWORD=***
 
 ==================
 
@@ -67,3 +67,74 @@ app/Models/TUsers.php
 database/migrations/2019_08_22_000951_create_t_posts_table.php
 database/migrations/2019_08_22_001039_create_t_otdels_table.php
 database/migrations/2019_08_22_004332_create_t_users_table.php
+
+=== Редактирование моделей ===
+
+Модели связаны с таблицами, соответсвенно можно указать какую таблицу использовать:
+protected $table = 'имя таблицы';
+
+В моделях необходимо первым делом указать поля таблиц которые будут обновляться.
+
+2 способа:
+    1. Указать перечень необходимы полей:
+
+        protected $fillable = [
+                    'otdel',
+                    'address',
+                    'telefon',
+                    'email',
+                ];
+
+    2. Наоборот указать какие поле не будут вовлечены в обновление (все остальные будут):
+
+        protected $guarded = [
+
+                ];
+
+!!!  Поля id, created_at и update_at - не указывать, они заполняются автоматически. !!!
+
+
+=== Редактирование моделей. Связи ===
+
+Также в моделях можно указать связи.
+Типы связей:
+    - один-ко-многим    (hasMany)
+    - один-к-одному     (hasOne)
+    - многие-ко-многими (belongsToMany)
+    - сквозная связь    (hasManyThrough)
+
+Например, Юзер имеет 1 долность и 1 отдел, указываем в модели User:
+--------------------------------------------
+        <?php
+
+        namespace App\Models;
+
+        use Illuminate\Database\Eloquent\Model;
+
+        class TUsers extends Model
+        {
+            // Указываем поля которые могут быть заполнены:
+
+            protected $fillable = [
+                'surname',
+                'firstname',
+                'secondname',
+                'post_id',
+                'iptel',
+                'tel',
+                'otdel_id'
+            ];
+
+            // Юзер имеет 1 должность:
+            public function post() {
+                //return $this->hasOne("App\Models\TPost");   // можно так
+                return $this->hasOne(TPosts::class);  // лучше так
+            }
+
+            // Юзер имеет 1 отдел:
+            public function otdel() {
+                return $this->hasOne(TOtdels::class);
+            }
+
+        }
+--------------------------------------------

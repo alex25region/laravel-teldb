@@ -31,7 +31,6 @@ class CreateTUsersTable extends Migration
             $table->foreign('post_id')->references('id')->on('t_posts');
             $table->foreign('otdel_id')->references('id')->on('t_otdels');
 
-
             $table->index(['surname', 'firstname', 'iptel']);
         });
     }

@@ -1,0 +1,9 @@
+ГЕНЕРИРОВАНИЕ ФЕЙКОВЫХ ДАННЫХ В LARAVEL
+
+Пути:
+database/factories
+database/seeds
+
+Создание Factory:
+    php artisan make:factory PostFactory --model=Post
+    php artisan make:factory TUserFactory --model=TUser
