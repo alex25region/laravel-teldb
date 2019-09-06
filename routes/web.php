@@ -14,3 +14,37 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+//Route::get('/users', function () {
+//    return view('users');
+//});
+
+
+Route::get('/admin', function () {
+    return view('admin.dashboard');
+});
+
+Route::get('/admin/users', "Admin\TUsersController@index")->name('users.index');
+
+//Route::resource('admin.users','TUsersController');
+
+
+
+
+/*
+$groupData = [
+    'namespace' => 'Admin',
+    'prefix' => 'admin'
+];
+
+Route::group($groupData, function () {
+    //Users
+    $methods = ['index', 'edit', 'store', 'update', 'create'];
+
+    Route::resource('users', 'TUsersController')
+        ->only($methods)
+        ->names('admin.users');
+
+
+
+});*/

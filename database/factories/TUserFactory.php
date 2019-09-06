@@ -36,20 +36,3 @@ $factory->define(TUsers::class, function (Faker $faker) {
 
     return $data;
 });
-
-
-//$factory->defineAs(TUsers::class, 'admin', function (Faker $faker) {
-//
-//    $data = [
-//
-//        'surname' => 'admin',
-//        'firstname' => 'admin',
-//        'secondname' => 'admin',
-//        'iptel' => rand(1000,1999),
-//        'tel' => rand(200000,900000),
-//        'post_id' => '1',
-//        'otdel_id' => '2',
-//    ];
-//
-//    return $data;
-//});
