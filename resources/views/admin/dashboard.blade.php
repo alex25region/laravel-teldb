@@ -82,19 +82,19 @@
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
 {{--                                <a href="#" class="nav-link">--}}
-                                    <a href="{{ route('users.index') }}" class="nav-link">
+                                    <a href="{{ route('admin.users.index') }}" class="nav-link">
                                     <i class="fas fa-users nav-icon"></i>
                                     <p>USERS</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="#" class="nav-link">
+                                <a href="{{ route('admin.posts.index') }}" class="nav-link">
                                     <i class="fas fa-address-card nav-icon"></i>
                                     <p>POSTS</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="#" class="nav-link">
+                                <a href="{{ route('admin.otdels.index') }}" class="nav-link">
                                     <i class="fas fa-landmark nav-icon"></i>
                                     <p>OTDELS</p>
                                 </a>

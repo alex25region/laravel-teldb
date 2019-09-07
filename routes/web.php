@@ -24,14 +24,14 @@ Route::get('/admin', function () {
     return view('admin.dashboard');
 });
 
-Route::get('/admin/users', "Admin\TUsersController@index")->name('users.index');
+//Route::get('/admin/users', "Admin\TUsersController@index")->name('users.index');
 
 //Route::resource('admin.users','TUsersController');
 
 
 
 
-/*
+
 $groupData = [
     'namespace' => 'Admin',
     'prefix' => 'admin'
@@ -39,12 +39,14 @@ $groupData = [
 
 Route::group($groupData, function () {
     //Users
-    $methods = ['index', 'edit', 'store', 'update', 'create'];
-
+    //$methods = ['index', 'edit', 'store', 'update', 'create'];
     Route::resource('users', 'TUsersController')
-        ->only($methods)
+        //->only($methods)
         ->names('admin.users');
 
+    //Posts
+    Route::resource('posts', 'TPostsController')->names('admin.posts');
 
-
-});*/
+    //Otdels
+    Route::resource('otdels', 'TOtdelsController')->names('admin.otdels');
+});
