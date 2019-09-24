@@ -24,7 +24,11 @@ Route::get('/admin', function () {
     return view('admin.dashboard');
 });
 
-//Route::get('/admin/users', "Admin\TUsersController@index")->name('users.index');
+//Route::get('/users2',  function () {
+//    return view('admin.users.index2');
+//});
+
+
 
 //Route::resource('admin.users','TUsersController');
 

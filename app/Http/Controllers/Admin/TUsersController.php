@@ -15,7 +15,8 @@ class TUsersController extends Controller
      */
     public function index()
     {
-        $users = TUsers::all();
+        //$users = TUsers::all();
+        $users = TUsers::paginate(25);
         return view('admin.users.index', (['users' => $users]));
     }
 
